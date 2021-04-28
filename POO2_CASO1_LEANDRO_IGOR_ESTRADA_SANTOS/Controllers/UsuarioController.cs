@@ -9,35 +9,30 @@ namespace POO2_CASO1_LEANDRO_IGOR_ESTRADA_SANTOS.Controllers
 {
     public class UsuarioController : Controller
     {
-        static List<Models.Usuario> ListaUsu = new List<Usuario>();
-        // GET: Usuario
+
+        // GET: login
         public ActionResult Index()
         {
             return View();
         }
-
-        void CargarUsuarios()
+        [HttpPost]
+        public ActionResult loginform(FormCollection collection)
         {
-            Usuario obj1 = new Usuario();
-            obj1.usuario = "CIBER";
-            obj1.clave = "T4CM2021";
-
-            // agregar los elementos a la lista
-            ListaUsu.Add(obj1);
-
-        public ActionResult UsuariosListado()
-        {
-            // si es la 1ra vez que se llama a este actionresult, entonces
-            // cargamos los productos
-            if (ListaUsu.Count == 0)
+            string email = collection.Get("email");
+            string Password = collection.Get("Password");
+            if (email == "srinickraj@gmail.com" && Password == "1234")
             {
-                    // poblando a ListaProd
-                    CargarUsuarios();
+                Response.Redirect("http://www.neerajcodesolutions.com");
             }
-            // enviar los datos del modelo Productos que se encuentra en
-            // "ListaProd" a su vista
-            return View(ListaUsu);
+            else
+            {
+                ViewBag.Message = "Please enter valid Email ID and Password";
+
+            }
+            return View("Index");
         }
 
     }
+
 }
+
