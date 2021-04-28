@@ -10,13 +10,9 @@ namespace POO2_CASO1_LEANDRO_IGOR_ESTRADA_SANTOS.Models
     {
 
         // Propiedades
-        [Display(Name = "Usuario")]
-        [Required]
-        public String usuario { get; set; }
 
-        [Display(Name = "Clave")]
-        [Required]
-        public string clave { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
 
     }
 }

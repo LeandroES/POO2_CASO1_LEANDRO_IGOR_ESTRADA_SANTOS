@@ -1,0 +1,16 @@
+﻿@User POO2_CASO1_LEANDRO_IGOR_ESTRADA_SANTOS.Models
+@model POO2_CASO1_LEANDRO_IGOR_ESTRADA_SANTOS.Models.Usuario
+@{
+    ViewBag.Title = "Reg";
+}
+@using (Html.BeginForm("SaveReg", "Usuario"))
+{
+
+    @Html.Label("UserName:")
+    @Html.TextBox("UserName")
+
+    @Html.Label("Password:")
+    @Html.TextBox("Password")
+
+    <input type="submit" value="Save" />
+}

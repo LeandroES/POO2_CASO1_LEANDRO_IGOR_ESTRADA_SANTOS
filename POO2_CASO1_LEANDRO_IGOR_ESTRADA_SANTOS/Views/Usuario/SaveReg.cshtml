@@ -1,0 +1,11 @@
+﻿@model POO2_CASO1_LEANDRO_IGOR_ESTRADA_SANTOS.Models.Usuario
+@{
+    ViewBag.Title = "SaveReg";
+}
+
+@Html.TextBox("uname", (string)ViewBag.sUsername)
+@Html.TextBox("pw", (string)ViewBag.sPassword)
+@using (Html.BeginForm("Login", "Usuario"))
+{
+    <input type="submit" value="UserLogin" />
+}

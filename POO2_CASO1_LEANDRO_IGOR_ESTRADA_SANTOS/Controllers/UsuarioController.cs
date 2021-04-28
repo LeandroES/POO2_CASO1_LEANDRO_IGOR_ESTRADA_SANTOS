@@ -4,35 +4,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace POO2_CASO1_LEANDRO_IGOR_ESTRADA_SANTOS.Controllers
 {
     public class UsuarioController : Controller
     {
 
-        // GET: login
-        public ActionResult Index()
+        // GET: Registration
+        public ActionResult Reg()
+        {
+
+            return View();
+
+        }
+        public ActionResult SaveReg()
+        {
+           
+       
+            string sUsername = Request.Form["Username"];
+            string sPassword = Request.Form["Password"];
+            ViewBag.sUsername = sUsername;
+            ViewBag.sPassword = sPassword;
+            Session["username"] = sUsername;
+            Session["password"] = sPassword;
+            return View();
+
+        }
+        public ActionResult LoginPage()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult loginform(FormCollection collection)
+        public ActionResult Log()
         {
-            string email = collection.Get("email");
-            string Password = collection.Get("Password");
-            if (email == "srinickraj@gmail.com" && Password == "1234")
+            string nUserName = Request.Form["UserName"];
+            string nPassword = Request.Form["Password"];
+            string sUsername = Session["username"].ToString();
+            string sPassword = Session["password"].ToString();
+            if (string.Compare(sUsername, nUserName) == 0 && string.Compare(sPassword, nPassword) == 0)
             {
-                Response.Redirect("http://www.neerajcodesolutions.com");
+                ViewBag.message = "login success";
             }
-            else
-            {
-                ViewBag.Message = "Please enter valid Email ID and Password";
-
+            else {
+                ViewBag.message = "Login fail";
             }
-            return View("Index");
+            return View();
         }
-
     }
-
 }
+
 
